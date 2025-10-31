@@ -1,4 +1,4 @@
-package com.teja_app_productions_random_number_plus.activities
+package com.teja_app_productions_random_number_plus.features
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
