@@ -1,27 +1,20 @@
 package com.teja_app_productions_random_number_plus.main
 
 import androidx.lifecycle.ViewModel
-import com.teja_app_productions_random_number_plus.R
-import com.teja_app_productions_random_number_plus.main.components.NavToFeatureButtonModel
-import com.teja_app_productions_random_number_plus.navigation.NavigationController
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import javax.inject.Inject
 
-data class MainScreenState(
-    val navToFeatureButtonModel: NavToFeatureButtonModel
-)
-
-class MainScreenViewModel(private val navigationController: NavigationController) : ViewModel() {
+@HiltViewModel
+class MainScreenViewModel @Inject constructor(
+    mainScreenModelFactory: MainScreenModelFactory
+) : ViewModel() {
 
     private val _model = MutableStateFlow(
-        MainScreenModel(
-            button = "test"
-        )
+        mainScreenModelFactory.create()
     )
     val model: StateFlow<MainScreenModel> = _model.asStateFlow()
 
-    fun onNavigateToFeature() {
-        navigationController.navigateToFeature()
-    }
 }

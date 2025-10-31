@@ -4,27 +4,37 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusTheme
 import com.teja_app_productions_random_number_plus.navigation.NavigationController
-import androidx.compose.runtime.collectAsState
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var navigationController: NavigationController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val navigationController = NavigationController(this)
-        val viewModel: MainScreenViewModel by viewModels { MainScreenViewModelFactory(navigationController) }
 
         setContent {
             RandomNumberPlusTheme {
-                MainScreen(
-                    onNavigateToFeature = viewModel::onNavigateToFeature,
-                    model = viewModel.model.collectAsState().value
-                )
+                MainScreenDestination()
             }
         }
+    }
+
+    @Composable
+    fun MainScreenDestination(
+        viewModel: MainScreenViewModel = hiltViewModel()
+    ) {
+        MainScreen(
+            onNavigateToFeature = navigationController::navigateToFeature,
+            model = viewModel.model.collectAsState().value
+        )
     }
 }
