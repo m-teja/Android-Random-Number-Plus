@@ -2,15 +2,20 @@ package com.teja_app_productions_random_number_plus.main
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.teja_app_productions_random_number_plus.R
+import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusPaddings
 import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusTheme
 import com.teja_app_productions_random_number_plus.main.components.NavToFeatureButton
 import com.teja_app_productions_random_number_plus.main.components.NavToFeatureButtonModel
@@ -22,24 +27,53 @@ fun MainScreen(
     model: MainScreenModel,
 ) {
     Surface(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
         Column(
-            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(
+                    vertical = RandomNumberPlusPaddings.verticalScreenPadding,
+                    horizontal = RandomNumberPlusPaddings.horizontalScreenPadding
+                )
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(RandomNumberPlusPaddings.largePadding),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = "Hello from Main Screen!"
-            )
-            NavToFeatureButton(
-                model = NavToFeatureButtonModel(R.drawable.ic_launcher_background),
-                onClick = onNavigateToFeature
+            MainButtonRow(
+                onNavigateToFeature = onNavigateToFeature,
+                model = model
             )
         }
     }
+}
 
-
+@Composable
+private fun MainButtonRow(
+    modifier: Modifier = Modifier,
+    onNavigateToFeature: () -> Unit,
+    model: MainScreenModel,
+) {
+    model.featureButtonList.chunked(2).forEach { rowOfButtons ->
+        Row(
+            modifier = modifier,
+            horizontalArrangement = Arrangement.spacedBy(RandomNumberPlusPaddings.largePadding)
+        ) {
+            rowOfButtons.forEach { featureButtonModel ->
+                NavToFeatureButton(
+                    modifier = Modifier
+                        .weight(1f),
+                    model = featureButtonModel,
+                    onClick = onNavigateToFeature
+                )
+            }
+            if (rowOfButtons.size < 2) {
+                Spacer(modifier = Modifier.weight(1f))
+            }
+        }
+    }
 }
 
 @Preview(showBackground = true)
@@ -49,7 +83,29 @@ fun MainScreenPreview() {
         MainScreen(
             onNavigateToFeature = {},
             model = MainScreenModel(
-                listOf()
+                listOf(
+                    NavToFeatureButtonModel(
+                        R.drawable.ic_launcher_foreground
+                    ),
+                    NavToFeatureButtonModel(
+                        R.drawable.ic_launcher_foreground
+                    ),
+                    NavToFeatureButtonModel(
+                        R.drawable.ic_launcher_foreground
+                    ),
+                    NavToFeatureButtonModel(
+                        R.drawable.ic_launcher_foreground
+                    ),
+                    NavToFeatureButtonModel(
+                        R.drawable.ic_launcher_foreground
+                    ),
+                    NavToFeatureButtonModel(
+                        R.drawable.ic_launcher_foreground
+                    ),
+                    NavToFeatureButtonModel(
+                        R.drawable.ic_launcher_foreground
+                    )
+                )
             )
         )
     }
