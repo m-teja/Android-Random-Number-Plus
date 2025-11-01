@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.teja_app_productions_random_number_plus.R
+import com.teja_app_productions_random_number_plus.features.FeatureType
 import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusPaddings
 import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusTheme
 import com.teja_app_productions_random_number_plus.main.components.NavToFeatureButton
@@ -23,7 +24,7 @@ import com.teja_app_productions_random_number_plus.main.components.NavToFeatureB
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
-    onNavigateToFeature: () -> Unit,
+    onNavigateToFeature: (FeatureType) -> Unit,
     model: MainScreenModel,
 ) {
     Surface(
@@ -53,7 +54,7 @@ fun MainScreen(
 @Composable
 private fun MainButtonRow(
     modifier: Modifier = Modifier,
-    onNavigateToFeature: () -> Unit,
+    onNavigateToFeature: (FeatureType) -> Unit,
     model: MainScreenModel,
 ) {
     model.featureButtonList.chunked(2).forEach { rowOfButtons ->

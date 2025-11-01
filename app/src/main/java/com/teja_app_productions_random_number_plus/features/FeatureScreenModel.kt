@@ -1,0 +1,5 @@
+package com.teja_app_productions_random_number_plus.features
+
+interface FeatureScreenModel {
+    val history: String
+}

@@ -12,6 +12,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.teja_app_productions_random_number_plus.R
+import com.teja_app_productions_random_number_plus.features.FeatureType
 import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusTheme
 
 data class NavToFeatureButtonModel(
@@ -22,10 +23,12 @@ data class NavToFeatureButtonModel(
 fun NavToFeatureButton(
     modifier: Modifier = Modifier,
     model: NavToFeatureButtonModel,
-    onClick: () -> Unit,
+    onClick: (FeatureType) -> Unit,
 ) {
     Button(
-        onClick = onClick,
+        onClick = {
+            onClick(FeatureType.COIN_FLIP)
+        },
         modifier = modifier
             .aspectRatio(1f),
         border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary)
