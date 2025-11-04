@@ -6,21 +6,16 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject
-import kotlin.random.Random
 
 @HiltViewModel
-class CoinFlipViewModel @Inject constructor() : ViewModel() {
+class CoinFlipViewModel @Inject constructor(
+    private val factory: CoinFlipScreenModelFactory
+) : ViewModel() {
 
-    private val _model = MutableStateFlow(CoinFlipScreenModel())
+    private val _model = MutableStateFlow(factory.create())
     val model = _model.asStateFlow()
 
     fun flipCoin() {
-        val result = if (Random.nextBoolean()) "Heads" else "Tails"
-        _model.update {
-            it.copy(
-                result = result,
-                history = it.history + "\n" + result
-            )
-        }
+        _model.update { factory.flip(it) }
     }
 }

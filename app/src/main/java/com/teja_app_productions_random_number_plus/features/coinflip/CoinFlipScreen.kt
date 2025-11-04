@@ -1,14 +1,17 @@
 package com.teja_app_productions_random_number_plus.features.coinflip
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.teja_app_productions_random_number_plus.features.components.FlashingTutorial
 import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusTheme
 
 @Composable
@@ -16,14 +19,22 @@ fun CoinFlipScreen(
     model: CoinFlipScreenModel,
     onFlipCoin: () -> Unit
 ) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Surface(
+        modifier = Modifier.fillMaxSize()
     ) {
-        Text(text = model.result)
-        Button(onClick = onFlipCoin) {
-            Text(text = "Flip Coin")
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(text = model.result.name.lowercase().replaceFirstChar { it.titlecase() })
+            Button(onClick = onFlipCoin) {
+                Text(text = "Flip Coin")
+            }
+        }
+
+        if (model.showTutorial) {
+            FlashingTutorial(message = "Tap anywhere to dismiss this tutorial.")
         }
     }
 }
@@ -33,7 +44,10 @@ fun CoinFlipScreen(
 private fun CoinFlipScreenPreview() {
     RandomNumberPlusTheme {
         CoinFlipScreen(
-            model = CoinFlipScreenModel(result = "Heads"),
+            model = CoinFlipScreenModel(
+                result = CoinFlipOutcome.HEADS,
+                showTutorial = true
+            ),
             onFlipCoin = {}
         )
     }

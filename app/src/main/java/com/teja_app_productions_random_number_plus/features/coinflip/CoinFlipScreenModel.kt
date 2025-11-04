@@ -11,6 +11,7 @@ enum class CoinFlipOutcome {
 data class CoinFlipResult(val outcome: CoinFlipOutcome) : FeatureHistory
 
 data class CoinFlipScreenModel(
-    val result: CoinFlipOutcome? = null,
+    val result: CoinFlipOutcome,
     override val history: List<CoinFlipResult> = emptyList(),
+    override val showTutorial: Boolean = false
 ) : FeatureScreenModel
