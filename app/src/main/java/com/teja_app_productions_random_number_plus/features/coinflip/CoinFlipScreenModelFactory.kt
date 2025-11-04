@@ -19,8 +19,7 @@ class CoinFlipScreenModelFactory @Inject constructor() {
         val newHistoryEntry = CoinFlipResult(newResult)
         return currentState.copy(
             result = newResult,
-            history = currentState.history + newHistoryEntry,
-            showTutorial = false // Hide tutorial after first flip
+            history = currentState.history + newHistoryEntry
         )
     }
 

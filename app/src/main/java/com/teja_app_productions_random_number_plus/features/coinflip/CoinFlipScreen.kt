@@ -10,9 +10,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.teja_app_productions_random_number_plus.features.components.FlashingTutorial
 import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusTheme
+import com.teja_app_productions_random_number_plus.R
 
 @Composable
 fun CoinFlipScreen(
@@ -34,7 +36,7 @@ fun CoinFlipScreen(
         }
 
         if (model.showTutorial) {
-            FlashingTutorial(message = "Tap anywhere to dismiss this tutorial.")
+            FlashingTutorial(message = stringResource(R.string.coin_flip_tutorial_message))
         }
     }
 }
