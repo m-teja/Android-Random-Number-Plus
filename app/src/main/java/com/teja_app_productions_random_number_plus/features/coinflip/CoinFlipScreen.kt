@@ -1,14 +1,10 @@
 package com.teja_app_productions_random_number_plus.features.coinflip
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -17,39 +13,33 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.teja_app_productions_random_number_plus.R
-import com.teja_app_productions_random_number_plus.features.components.FlashingTutorial
-import com.teja_app_productions_random_number_plus.features.components.HistoryList
+import com.teja_app_productions_random_number_plus.features.components.FeatureScaffold
+import com.teja_app_productions_random_number_plus.features.components.FeatureScaffoldModel
 import com.teja_app_productions_random_number_plus.features.components.HistoryListModel
 import com.teja_app_productions_random_number_plus.features.components.HistoryRow
 import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusTheme
 
 @Composable
 fun CoinFlipScreen(
+    modifier: Modifier = Modifier,
     model: CoinFlipScreenModel,
     onFlipCoin: () -> Unit
 ) {
     Surface(
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize()
     ) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+        FeatureScaffold(
+            model = FeatureScaffoldModel(
+                showTutorial = model.showTutorial,
+                tutorialMessage = stringResource(R.string.coin_flip_tutorial_message),
+                history = model.history
+            )
         ) {
             Text(text = model.result.name.lowercase().replaceFirstChar { it.titlecase() })
             Button(onClick = onFlipCoin) {
                 Text(text = "Flip Coin")
             }
-            HistoryList(
-                model = model.history,
-                modifier = Modifier.padding(top = 16.dp)
-            )
-        }
-
-        if (model.showTutorial) {
-            FlashingTutorial(message = stringResource(R.string.coin_flip_tutorial_message))
         }
     }
 }

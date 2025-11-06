@@ -1,6 +1,7 @@
 package com.teja_app_productions_random_number_plus.features
 
 import com.teja_app_productions_random_number_plus.features.coinflip.CoinFlipResult
+import com.teja_app_productions_random_number_plus.features.randomnumberpicker.RandomNumberResult
 import java.lang.reflect.Type
 
 enum class FeatureType {
@@ -10,7 +11,7 @@ enum class FeatureType {
     },
     RANDOM_NUMBER {
         override val historyType: Type
-            get() = TODO("Create a data class for the history item and provide its type here.")
+            get() = RandomNumberResult::class.java
     },
     RANDOM_COLOR {
         override val historyType: Type

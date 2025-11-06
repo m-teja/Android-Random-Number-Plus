@@ -3,4 +3,10 @@
 
     <!-- Coin flip -->
     <string name="coin_flip_tutorial_message">Swipe to flip a coin!</string>
+
+    <!-- Random number picker -->
+    <string name="random_number_picker_tutorial_message">Tap to generate a random number!</string>
+    <string name="random_number_picker_min_label">Min</string>
+    <string name="random_number_picker_max_label">Max</string>
+
 </resources>

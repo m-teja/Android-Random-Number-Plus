@@ -86,26 +86,13 @@ fun MainScreenPreview() {
             model = MainScreenModel(
                 listOf(
                     NavToFeatureButtonModel(
+                        FeatureType.COIN_FLIP,
                         R.drawable.ic_launcher_foreground
                     ),
                     NavToFeatureButtonModel(
+                        FeatureType.RANDOM_NUMBER,
                         R.drawable.ic_launcher_foreground
                     ),
-                    NavToFeatureButtonModel(
-                        R.drawable.ic_launcher_foreground
-                    ),
-                    NavToFeatureButtonModel(
-                        R.drawable.ic_launcher_foreground
-                    ),
-                    NavToFeatureButtonModel(
-                        R.drawable.ic_launcher_foreground
-                    ),
-                    NavToFeatureButtonModel(
-                        R.drawable.ic_launcher_foreground
-                    ),
-                    NavToFeatureButtonModel(
-                        R.drawable.ic_launcher_foreground
-                    )
                 )
             )
         )

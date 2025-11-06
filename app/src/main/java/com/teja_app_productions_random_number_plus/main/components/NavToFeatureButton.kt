@@ -16,6 +16,7 @@ import com.teja_app_productions_random_number_plus.features.FeatureType
 import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusTheme
 
 data class NavToFeatureButtonModel(
+    val featureType: FeatureType,
     @DrawableRes val imageRes: Int
 )
 
@@ -27,7 +28,7 @@ fun NavToFeatureButton(
 ) {
     Button(
         onClick = {
-            onClick(FeatureType.COIN_FLIP)
+            onClick(model.featureType)
         },
         modifier = modifier
             .aspectRatio(1f),
@@ -45,7 +46,10 @@ fun NavToFeatureButton(
 fun NavToFeatureButtonPreview() {
     RandomNumberPlusTheme {
         NavToFeatureButton(
-            model = NavToFeatureButtonModel(R.drawable.ic_launcher_foreground),
+            model = NavToFeatureButtonModel(
+                FeatureType.COIN_FLIP,
+                R.drawable.ic_launcher_foreground
+            ),
             onClick = {}
         )
     }
