@@ -1,4 +1,4 @@
-package com.teja_app_productions_random_number_plus.libs.serialization
+package com.teja_app_productions_random_number_plus.module
 
 import com.google.gson.Gson
 import dagger.Module

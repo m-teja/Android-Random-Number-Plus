@@ -1,21 +1,24 @@
 package com.teja_app_productions_random_number_plus.features.coinflip
 
-import androidx.lifecycle.ViewModel
+import com.teja_app_productions_random_number_plus.features.BaseFeatureViewModel
+import com.teja_app_productions_random_number_plus.features.FeatureType
+import com.teja_app_productions_random_number_plus.features.data.HistoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
 class CoinFlipViewModel @Inject constructor(
-    private val factory: CoinFlipScreenModelFactory
-) : ViewModel() {
-
-    private val _model = MutableStateFlow(factory.create())
-    val model = _model.asStateFlow()
-
+    private val factory: CoinFlipScreenModelFactory,
+    historyRepository: HistoryRepository,
+) : BaseFeatureViewModel<CoinFlipScreenModel, CoinFlipResult>(
+    featureType = FeatureType.COIN_FLIP,
+    historyRepository = historyRepository,
+    screenModelFactory = factory,
+    initialState = factory.create()
+) {
     fun flipCoin() {
-        _model.update { factory.flip(it) }
+        val newModel = factory.flip(model.value)
+        updateHistory(CoinFlipResult(newModel.result))
+        updateModel(newModel)
     }
 }

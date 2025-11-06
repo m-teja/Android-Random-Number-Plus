@@ -11,21 +11,15 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FeatureActivity : ComponentActivity() {
 
-    private val sharedViewModel: SharedFeatureViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val featureType = intent.getSerializableExtra("FEATURE_TYPE") as? FeatureType
 
-        if (featureType != null) {
-            sharedViewModel.loadFeature(featureType)
-        }
-
         setContent {
             RandomNumberPlusTheme {
                 when (featureType) {
-                    FeatureType.COIN_FLIP -> CoinFlipScreenDestination(sharedViewModel)
+                    FeatureType.COIN_FLIP -> CoinFlipScreenDestination()
                     else -> { /* Handle error or other feature cases */ }
                 }
             }
