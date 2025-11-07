@@ -3,6 +3,7 @@ package com.teja_app_productions_random_number_plus.features.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -26,6 +27,7 @@ fun FeatureScaffold(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.Center,
     horizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
+    onDeleteHistoryClicked: () -> Unit,
     content: @Composable () -> Unit
 ) {
     Scaffold(
@@ -39,13 +41,23 @@ fun FeatureScaffold(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it),
-            verticalArrangement = verticalArrangement,
             horizontalAlignment = horizontalAlignment
         ) {
-            content()
+            Column(
+                modifier = Modifier
+                    .weight(2f)
+                    .fillMaxWidth(),
+                verticalArrangement = verticalArrangement,
+                horizontalAlignment = horizontalAlignment
+            ) {
+                content()
+            }
             HistoryList(
                 model = model.history,
-                modifier = Modifier.padding(top = RandomNumberPlusPaddings.largePadding)
+                modifier = Modifier
+                    .padding(top = RandomNumberPlusPaddings.largePadding)
+                    .weight(1f),
+                onDeleteHistoryClicked = onDeleteHistoryClicked
             )
         }
     }
@@ -75,7 +87,8 @@ private fun FeatureScaffoldPreview() {
                         )
                     )
                 )
-            )
+            ),
+            onDeleteHistoryClicked = {}
         ) {
             Text(text = "Preview Content")
         }

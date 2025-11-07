@@ -24,7 +24,8 @@ import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusTheme
 fun CoinFlipScreen(
     modifier: Modifier = Modifier,
     model: CoinFlipScreenModel,
-    onFlipCoin: () -> Unit
+    onFlipCoin: () -> Unit,
+    onDeleteHistoryClicked: () -> Unit,
 ) {
     Surface(
         modifier = modifier.fillMaxSize()
@@ -33,8 +34,9 @@ fun CoinFlipScreen(
             model = FeatureScaffoldModel(
                 showTutorial = model.showTutorial,
                 tutorialMessage = stringResource(R.string.coin_flip_tutorial_message),
-                history = model.history
-            )
+                history = model.history,
+            ),
+            onDeleteHistoryClicked = onDeleteHistoryClicked
         ) {
             Text(text = model.result.name.lowercase().replaceFirstChar { it.titlecase() })
             Button(onClick = onFlipCoin) {
@@ -73,7 +75,8 @@ private fun CoinFlipScreenPreview() {
                 ),
                 showTutorial = true
             ),
-            onFlipCoin = {}
+            onFlipCoin = {},
+            onDeleteHistoryClicked = {},
         )
     }
 }

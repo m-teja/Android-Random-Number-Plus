@@ -24,6 +24,7 @@ fun RandomNumberScreen(
     onGenerateNewNumber: () -> Unit,
     onMinRangeChanged: (Int) -> Unit,
     onMaxRangeChanged: (Int) -> Unit,
+    onDeleteHistoryClicked: () -> Unit,
 ) {
     Surface(
         modifier = modifier
@@ -35,7 +36,8 @@ fun RandomNumberScreen(
                 showTutorial = model.showTutorial,
                 tutorialMessage = stringResource(id = R.string.random_number_picker_tutorial_message),
                 history = model.history
-            )
+            ),
+            onDeleteHistoryClicked = onDeleteHistoryClicked
         ) {
             Text(
                 text = model.result.toString(),
@@ -67,7 +69,8 @@ private fun RandomNumberScreenPreview() {
             ),
             onGenerateNewNumber = {},
             onMinRangeChanged = {},
-            onMaxRangeChanged = {}
+            onMaxRangeChanged = {},
+            onDeleteHistoryClicked = {},
         )
     }
 }

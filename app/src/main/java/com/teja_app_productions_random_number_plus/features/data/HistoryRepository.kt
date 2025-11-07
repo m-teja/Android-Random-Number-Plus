@@ -20,4 +20,8 @@ class HistoryRepository @Inject constructor(
         history.add(0, RemoteHistoryItemModel(entry, dateProvider.getFormattedTimestamp()))
         localHistoryDataSource.saveHistoryList(featureType.toHistoryKey(), history.take(MAX_HISTORY_SIZE))
     }
+
+    fun deleteHistory(featureType: FeatureType) {
+        localHistoryDataSource.deleteHistory(featureType)
+    }
 }

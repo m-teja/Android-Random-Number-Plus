@@ -25,4 +25,8 @@ class LocalHistoryDataSource @Inject constructor(
     fun <T> saveHistoryList(key: String, historyList: List<T>) {
         preferencesManager.saveHistory(key, historyList)
     }
+
+    fun deleteHistory(featureType: FeatureType) {
+        saveHistoryList(featureType.toHistoryKey(), emptyList<RemoteHistoryItemModel<Any>>())
+    }
 }

@@ -43,6 +43,13 @@ abstract class BaseFeatureViewModel<T : FeatureScreenModel<T>, H>(
         }
     }
 
+    fun onDeleteHistoryClicked() {
+        viewModelScope.launch {
+            historyRepository.deleteHistory(featureType)
+            loadHistory()
+        }
+    }
+
     internal fun updateModel(newModel: T) {
         _model.update {
             newModel

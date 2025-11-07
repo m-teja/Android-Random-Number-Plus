@@ -15,6 +15,7 @@ fun RandomNumberScreenDestination(
         model = model,
         onGenerateNewNumber = randomNumberViewModel::generateNewNumber,
         onMinRangeChanged = randomNumberViewModel::onMinRangeChanged,
-        onMaxRangeChanged = randomNumberViewModel::onMaxRangeChanged
+        onMaxRangeChanged = randomNumberViewModel::onMaxRangeChanged,
+        onDeleteHistoryClicked = randomNumberViewModel::onDeleteHistoryClicked
     )
 }
