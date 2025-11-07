@@ -10,4 +10,8 @@
     <string name="random_number_picker_max_label">Max</string>
     <string name="random_number_picker_error_message_min_greater_than_max">Min can\'t be greater than max</string>
 
+    <!-- Dice roll -->
+    <string name="dice_roll_tutorial_message">Tap to roll!</string>
+    <string name="dice_roll_history_item_text">First: %1$d, Second: %2$d</string>
+
 </resources>

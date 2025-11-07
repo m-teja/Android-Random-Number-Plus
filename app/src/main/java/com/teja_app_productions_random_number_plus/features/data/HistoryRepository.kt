@@ -2,7 +2,7 @@ package com.teja_app_productions_random_number_plus.features.data
 
 import com.teja_app_productions_random_number_plus.features.base.FeatureType
 import com.teja_app_productions_random_number_plus.features.base.toHistoryKey
-import com.teja_app_productions_random_number_plus.libs.date.DateProvider
+import com.teja_app_productions_random_number_plus.libs.providers.DateProvider
 import javax.inject.Inject
 
 private const val MAX_HISTORY_SIZE = 20

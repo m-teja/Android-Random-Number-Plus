@@ -93,6 +93,10 @@ fun MainScreenPreview() {
                         FeatureType.RANDOM_NUMBER,
                         R.drawable.ic_launcher_foreground
                     ),
+                    NavToFeatureButtonModel(
+                        FeatureType.DICE_ROLL,
+                        R.drawable.ic_launcher_foreground
+                    )
                 )
             )
         )

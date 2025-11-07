@@ -1,62 +1,56 @@
-package com.teja_app_productions_random_number_plus.features.coinflip
+package com.teja_app_productions_random_number_plus.features.diceroll
 
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.withStyle
+import com.teja_app_productions_random_number_plus.R
 import com.teja_app_productions_random_number_plus.features.base.BaseScreenModelFactory
 import com.teja_app_productions_random_number_plus.features.components.HistoryListModel
 import com.teja_app_productions_random_number_plus.features.components.HistoryListModelFactory
 import com.teja_app_productions_random_number_plus.features.components.HistoryRow
 import com.teja_app_productions_random_number_plus.libs.providers.DateProvider
+import com.teja_app_productions_random_number_plus.libs.providers.StringProvider
 import javax.inject.Inject
 import kotlin.random.Random
 
-class CoinFlipScreenModelFactory @Inject constructor(
+class DiceRollScreenModelFactory @Inject constructor(
+    private val stringProvider: StringProvider,
     private val historyListModelFactory: HistoryListModelFactory,
     private val dateProvider: DateProvider,
-) : BaseScreenModelFactory<CoinFlipResult> {
+) : BaseScreenModelFactory<DiceRollResult> {
 
-    fun create(): CoinFlipScreenModel {
-        val initialResult = generateRandomOutcome()
+    fun create(): DiceRollScreenModel {
+        val initialResult = generateDiceRoll()
         val historyRow = createHistoryRow(
-            CoinFlipResult(initialResult),
+            initialResult,
             dateProvider.getFormattedTimestamp()
         )
-        return CoinFlipScreenModel(
-            result = initialResult,
+        return DiceRollScreenModel(
+            firstDie = initialResult.firstDie,
+            secondDie = initialResult.secondDie,
             history = HistoryListModel(listOf(historyRow)),
             showTutorial = true
         )
     }
 
-    fun flip(currentState: CoinFlipScreenModel): CoinFlipScreenModel {
-        val newResult = generateRandomOutcome()
+    fun generateNewNumbers(currentState: DiceRollScreenModel): DiceRollScreenModel {
+        val newResult = generateDiceRoll()
         val newHistory = currentState.history.list + createHistoryRow(
-            CoinFlipResult(newResult),
+            newResult,
             dateProvider.getFormattedTimestamp()
         )
         return currentState.copy(
-            result = newResult,
+            firstDie = newResult.firstDie,
+            secondDie = newResult.secondDie,
             history = HistoryListModel(newHistory),
         )
     }
 
-    private fun generateRandomOutcome(): CoinFlipOutcome {
-        return if (Random.nextBoolean()) CoinFlipOutcome.HEADS else CoinFlipOutcome.TAILS
+    private fun generateDiceRoll(): DiceRollResult {
+        return DiceRollResult(Random.nextInt(1, 7), Random.nextInt(1, 7))
     }
 
-    override fun createHistoryRow(entry: CoinFlipResult, timeStamp: String): HistoryRow {
-        val (color, flipString) = if (entry.outcome == CoinFlipOutcome.HEADS) {
-            Color.Green to "Heads"
-        } else {
-            Color.Red to "Tails"
-        }
+    override fun createHistoryRow(entry: DiceRollResult, timeStamp: String): HistoryRow {
         val text = buildAnnotatedString {
-            withStyle(style = SpanStyle(fontWeight = FontWeight.Bold, color = color)) {
-                append(flipString)
-            }
+            append(stringProvider.getString(R.string.dice_roll_history_item_text, entry.firstDie, entry.secondDie))
         }
         val time = buildAnnotatedString {
             append(timeStamp)

@@ -5,7 +5,7 @@ import com.teja_app_productions_random_number_plus.features.base.BaseScreenModel
 import com.teja_app_productions_random_number_plus.features.components.HistoryListModel
 import com.teja_app_productions_random_number_plus.features.components.HistoryListModelFactory
 import com.teja_app_productions_random_number_plus.features.components.HistoryRow
-import com.teja_app_productions_random_number_plus.libs.date.DateProvider
+import com.teja_app_productions_random_number_plus.libs.providers.DateProvider
 import javax.inject.Inject
 import kotlin.random.Random
 
