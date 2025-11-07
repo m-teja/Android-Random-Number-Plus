@@ -1,7 +1,7 @@
 package com.teja_app_productions_random_number_plus.features.data
 
-import com.teja_app_productions_random_number_plus.features.FeatureType
-import com.teja_app_productions_random_number_plus.features.toHistoryKey
+import com.teja_app_productions_random_number_plus.features.base.FeatureType
+import com.teja_app_productions_random_number_plus.features.base.toHistoryKey
 import com.teja_app_productions_random_number_plus.libs.date.DateProvider
 import javax.inject.Inject
 

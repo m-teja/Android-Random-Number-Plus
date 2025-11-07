@@ -12,7 +12,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.teja_app_productions_random_number_plus.R
-import com.teja_app_productions_random_number_plus.features.FeatureType
+import com.teja_app_productions_random_number_plus.features.base.FeatureType
 import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusTheme
 
 data class NavToFeatureButtonModel(

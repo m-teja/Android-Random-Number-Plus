@@ -1,4 +1,4 @@
-package com.teja_app_productions_random_number_plus.features
+package com.teja_app_productions_random_number_plus.features.base
 
 import android.content.Context
 import android.content.Intent
@@ -6,14 +6,9 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.teja_app_productions_random_number_plus.features.coinflip.CoinFlipScreenDestination
 import com.teja_app_productions_random_number_plus.features.randomnumberpicker.RandomNumberScreenDestination
-import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusPaddings
 import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusTheme
 import dagger.hilt.android.AndroidEntryPoint
 

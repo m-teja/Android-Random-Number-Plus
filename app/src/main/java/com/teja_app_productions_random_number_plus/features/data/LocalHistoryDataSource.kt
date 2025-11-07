@@ -1,8 +1,8 @@
 package com.teja_app_productions_random_number_plus.features.data
 
 import com.google.gson.reflect.TypeToken
-import com.teja_app_productions_random_number_plus.features.FeatureType
-import com.teja_app_productions_random_number_plus.features.toHistoryKey
+import com.teja_app_productions_random_number_plus.features.base.FeatureType
+import com.teja_app_productions_random_number_plus.features.base.toHistoryKey
 import com.teja_app_productions_random_number_plus.libs.preferences.PreferencesManager
 import javax.inject.Inject
 import javax.inject.Singleton

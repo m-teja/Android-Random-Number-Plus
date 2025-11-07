@@ -1,7 +1,7 @@
 package com.teja_app_productions_random_number_plus.features.randomnumberpicker
 
-import com.teja_app_productions_random_number_plus.features.BaseFeatureViewModel
-import com.teja_app_productions_random_number_plus.features.FeatureType
+import com.teja_app_productions_random_number_plus.features.base.BaseFeatureViewModel
+import com.teja_app_productions_random_number_plus.features.base.FeatureType
 import com.teja_app_productions_random_number_plus.features.data.HistoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

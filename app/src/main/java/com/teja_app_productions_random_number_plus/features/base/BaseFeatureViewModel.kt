@@ -1,4 +1,4 @@
-package com.teja_app_productions_random_number_plus.features
+package com.teja_app_productions_random_number_plus.features.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -5,7 +5,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
-import com.teja_app_productions_random_number_plus.features.BaseScreenModelFactory
+import com.teja_app_productions_random_number_plus.features.base.BaseScreenModelFactory
 import com.teja_app_productions_random_number_plus.features.components.HistoryListModel
 import com.teja_app_productions_random_number_plus.features.components.HistoryListModelFactory
 import com.teja_app_productions_random_number_plus.features.components.HistoryRow

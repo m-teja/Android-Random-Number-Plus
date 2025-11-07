@@ -1,6 +1,6 @@
 package com.teja_app_productions_random_number_plus.features.randomnumberpicker
 
-import com.teja_app_productions_random_number_plus.features.FeatureScreenModel
+import com.teja_app_productions_random_number_plus.features.base.FeatureScreenModel
 import com.teja_app_productions_random_number_plus.features.components.HistoryListModel
 
 internal const val RANDOM_NUMBER_PICKER_MIN_RANGE = 1

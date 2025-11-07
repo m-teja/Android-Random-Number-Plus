@@ -1,7 +1,7 @@
 package com.teja_app_productions_random_number_plus.features.randomnumberpicker
 
 import androidx.compose.ui.text.buildAnnotatedString
-import com.teja_app_productions_random_number_plus.features.BaseScreenModelFactory
+import com.teja_app_productions_random_number_plus.features.base.BaseScreenModelFactory
 import com.teja_app_productions_random_number_plus.features.components.HistoryListModel
 import com.teja_app_productions_random_number_plus.features.components.HistoryListModelFactory
 import com.teja_app_productions_random_number_plus.features.components.HistoryRow

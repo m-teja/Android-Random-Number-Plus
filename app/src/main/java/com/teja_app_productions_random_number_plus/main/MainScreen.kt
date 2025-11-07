@@ -15,7 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.teja_app_productions_random_number_plus.R
-import com.teja_app_productions_random_number_plus.features.FeatureType
+import com.teja_app_productions_random_number_plus.features.base.FeatureType
 import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusPaddings
 import com.teja_app_productions_random_number_plus.libs.ui.RandomNumberPlusTheme
 import com.teja_app_productions_random_number_plus.main.components.NavToFeatureButton

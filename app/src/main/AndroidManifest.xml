@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".features.FeatureActivity"
+            android:name=".features.base.FeatureActivity"
             android:exported="false"
             android:label="Feature" />
     </application>
