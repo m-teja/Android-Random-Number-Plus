@@ -40,15 +40,22 @@ class RandomNumberScreenModelFactory @Inject constructor(
         return currentState.copy(
             result = newResult,
             history = HistoryListModel(newHistory),
+            isInputValid = true,
         )
     }
 
     fun updateMinRange(currentState: RandomNumberScreenModel, newMin: Int): RandomNumberScreenModel {
-        return currentState.copy(minRange = newMin)
+        return currentState.copy(
+            minRange = newMin,
+            isInputValid = newMin <= currentState.maxRange
+        )
     }
 
     fun updateMaxRange(currentState: RandomNumberScreenModel, newMax: Int): RandomNumberScreenModel {
-        return currentState.copy(maxRange = newMax)
+        return currentState.copy(
+            maxRange = newMax,
+            isInputValid = newMax >= currentState.minRange
+        )
     }
 
     private fun generateRandomNumber(min: Int, max: Int): Int {

@@ -17,6 +17,8 @@ class RandomNumberViewModel @Inject constructor(
     initialState = factory.create()
 ) {
     fun generateNewNumber() {
+        if (!model.value.isInputValid) return
+
         val newModel = factory.generateNewNumber(model.value)
         updateHistory(RandomNumberResult(newModel.result, newModel.minRange, newModel.maxRange))
         updateModel(newModel)

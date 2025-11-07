@@ -8,5 +8,6 @@
     <string name="random_number_picker_tutorial_message">Tap to generate a random number!</string>
     <string name="random_number_picker_min_label">Min</string>
     <string name="random_number_picker_max_label">Max</string>
+    <string name="random_number_picker_error_message_min_greater_than_max">Min can\'t be greater than max</string>
 
 </resources>

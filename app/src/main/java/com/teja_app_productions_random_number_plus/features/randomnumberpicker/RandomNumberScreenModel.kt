@@ -10,6 +10,7 @@ data class RandomNumberScreenModel(
     val result: Int,
     val minRange: Int = RANDOM_NUMBER_PICKER_MIN_RANGE,
     val maxRange: Int = RANDOM_NUMBER_PICKER_MAX_RANGE,
+    val isInputValid: Boolean = true,
     override val history: HistoryListModel = HistoryListModel(emptyList()),
     override val showTutorial: Boolean = false,
 ) : FeatureScreenModel<RandomNumberScreenModel> {
